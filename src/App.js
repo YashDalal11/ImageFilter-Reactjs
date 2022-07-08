@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
 import './App.css';
+import MainContent from './components/MainContent';
+import Navbar from './components/Navbar';
+import Tabs from './components/Tabs';
+import Copyright from './components/Copyright';
 
 function App() {
+  const [mainContentLoader, setMainContentLoader] = useState("Chooser");
+  const navTabs =(id) =>{
+    setMainContentLoader(id)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Tabs navTabs={navTabs}/>
+      <MainContent mainContentLoader={mainContentLoader}/>
+      <Copyright />
     </div>
   );
 }
